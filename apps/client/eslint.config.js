@@ -27,10 +27,5 @@ export default tseslint.config([
       project: './tsconfig.json',
       tsconfigRootDir: __dirname,
     },
-    settings: {
-      react: {
-        version: '19.1.0',
-      },
-    },
   },
 ]);

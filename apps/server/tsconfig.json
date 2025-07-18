@@ -2,7 +2,6 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "module": "ESNext", // ✅ Must be ESM-compatible
     "target": "ES2020",
     "moduleResolution": "Node",
     "outDir": "dist",
@@ -10,6 +9,5 @@
     "esModuleInterop": true, // ✅ For `import express from 'express'`
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src"],
   "moduleSuffixes": [".js", ".ts"]
 }
