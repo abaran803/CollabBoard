@@ -12,7 +12,8 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "prepare": "husky",
-    "dev": "concurrently \"pnpm --filter client dev\" \"pnpm --filter server dev\""
+    "dev": "concurrently \"pnpm --filter client dev\" \"pnpm --filter server dev\"",
+    "build": "concurrently \"pnpm --filter client build\" \"pnpm --filter server build\""
   },
   "keywords": [],
   "author": "",
