@@ -27,5 +27,15 @@ export default defineConfig([
       'pnpm-workspace.yaml',
     ],
   },
+  {
+    settings: {
+      react: {
+        version: 'detect',
+      },
+    },
+    rules: {
+      'react/react-in-jsx-scope': 'off',
+    },
+  },
   eslintPluginPrettierRecommended,
 ]);
