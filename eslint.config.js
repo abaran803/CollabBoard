@@ -4,6 +4,8 @@ import tseslint from 'typescript-eslint';
 import pluginReact from 'eslint-plugin-react';
 import { defineConfig } from 'eslint/config';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+import { fileURLToPath } from 'url';
+import path from 'path';
 
 export default defineConfig([
   {
@@ -12,8 +14,20 @@ export default defineConfig([
     extends: ['js/recommended'],
   },
   {
-    files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-    languageOptions: { globals: globals.browser },
+    files: ['apps/server/**/*.ts'],
+    languageOptions: {
+      globals: globals.node,
+      parserOptions: {
+        project: './apps/server/tsconfig.json',
+        tsconfigRootDir: path.dirname(fileURLToPath(import.meta.url)),
+      },
+    },
+  },
+  {
+    files: ['apps/client/**/*.ts', 'apps/client/**/*.tsx'],
+    languageOptions: {
+      globals: globals.browser,
+    },
   },
   tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,

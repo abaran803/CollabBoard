@@ -4,6 +4,10 @@
   "compilerOptions": {
     "target": "ES2020",
     "moduleResolution": "Node",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     "outDir": "dist",
     "rootDir": "src",
     "esModuleInterop": true, // ✅ For `import express from 'express'`
