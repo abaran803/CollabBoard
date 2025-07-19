@@ -4,9 +4,11 @@ import '@/helpers/loadEnv';
 import cors from 'cors';
 import express from 'express';
 
-import '@/config/db';
+import sequelize from '@/config/db';
 
 const app = express(); // Create an Express application
+
+sequelize.sync();
 
 // Middleware configuration
 app.use(express.json()); // Parse incoming JSON requests
