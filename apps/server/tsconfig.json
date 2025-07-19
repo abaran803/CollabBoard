@@ -8,7 +8,7 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "outDir": "dist",
+    "outDir": "public/dist",
     "rootDir": "src",
     "esModuleInterop": true, // ✅ For `import express from 'express'`
     "allowSyntheticDefaultImports": true
