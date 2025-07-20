@@ -3,6 +3,8 @@ import '@/helpers/loadEnv';
 // app.ccaconst express = require("express");
 import cors from 'cors';
 import express from 'express';
+import userRoutes from '@/routes/users.route';
+import authRoutes from '@/routes/auth.route';
 
 import sequelize from '@/config/db';
 
@@ -20,6 +22,9 @@ const PORT = process.env.PORT || 5000;
 app.get('/api/hello', (_, res) => {
   res.json({ message: 'Hello from server!' });
 });
+
+app.use('/api/v1/auth', authRoutes);
+app.use('/api/v1/users', userRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
