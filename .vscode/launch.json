@@ -1,0 +1,34 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    // Launch Server Only
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Server",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/apps/server/src/index.ts",
+      "outFiles": ["${workspaceFolder}/**/*.js"],
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["--filter", "server", "dev"]
+    },
+    // Launch Client Only
+    {
+      "type": "pwa-node",
+      "request": "launch",
+      "name": "Launch Client",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["--filter", "client", "dev"]
+    },
+    // Launch Both Client and Server
+    {
+      "name": "Launch Client and Server",
+      "type": "node",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["dev"]
+    }
+  ]
+}
