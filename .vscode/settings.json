@@ -1,5 +1,19 @@
 {
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "typescript.preferences.importModuleSpecifier": "non-relative"
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+
+  // Hide folders from Explorer
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/build": true
+  },
+
+  // Ignore these folders during search
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/build": true
+  }
 }
