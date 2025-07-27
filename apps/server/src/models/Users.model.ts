@@ -7,6 +7,7 @@ export interface UserAttributes {
   firstName: string;
   lastName?: string;
   email: string;
+  avatar_url?: string;
   password?: string; // optional for social login
   googleId?: string;
   facebookId?: string;
@@ -50,6 +51,12 @@ export const User = sequelize.define<UserInstance>(
           msg: 'Email is Required',
         },
       },
+    },
+    avatar_url: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+      defaultValue:
+        'https://images.unsplash.com/photo-1474447976065-67d23accb1e3?q=80&w=385&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     },
     password: {
       type: DataTypes.STRING,
