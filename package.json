@@ -13,7 +13,8 @@
     "format": "prettier --write .",
     "prepare": "husky",
     "dev": "concurrently \"pnpm --filter client dev\" \"pnpm --filter server dev\"",
-    "build": "concurrently \"pnpm --filter client build\" \"pnpm --filter server build\""
+    "build": "concurrently \"pnpm --filter client build\" \"pnpm --filter server build\"",
+    "db:migrate": "pnpm --filter server db:migrate"
   },
   "keywords": [],
   "author": "",
