@@ -13,5 +13,6 @@
     "esModuleInterop": true, // ✅ For `import express from 'express'`
     "allowSyntheticDefaultImports": true
   },
-  "moduleSuffixes": [".js", ".ts"]
+  "moduleSuffixes": [".js", ".ts"],
+  "exclude": ["src/db"]
 }

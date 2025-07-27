@@ -37,6 +37,7 @@ export default defineConfig([
       'coverage',
       '**/public',
       '**/dist',
+      '**/src/db',
       'pnpm-lock.yaml',
       'pnpm-workspace.yaml',
     ],
