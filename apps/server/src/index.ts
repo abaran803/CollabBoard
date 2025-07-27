@@ -9,6 +9,7 @@ import authRoutes from '@/routes/auth.route';
 import sequelize from '@/config/db';
 import session from 'express-session';
 import passport from './auth/passport';
+import errorHandler from '@/middleware/errorHandler';
 
 const app = express(); // Create an Express application
 
@@ -38,6 +39,8 @@ app.get('/api/hello', (_, res) => {
 
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/users', userRoutes);
+
+app.use(errorHandler); // Error handling middleware
 
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
