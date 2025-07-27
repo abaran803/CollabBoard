@@ -1,5 +1,5 @@
 import sequelize from '@/config/db';
-import { DataTypes, Model } from 'sequelize';
+import { DataTypes, Model, Optional } from 'sequelize';
 
 // Define the attributes interface
 export interface UserAttributes {
@@ -7,11 +7,23 @@ export interface UserAttributes {
   firstName: string;
   lastName?: string;
   email: string;
-  password: string;
+  password?: string; // optional for social login
+  googleId?: string;
+  facebookId?: string;
+  googleTokens?: {
+    accessToken: string;
+    refreshToken: string;
+  };
+  facebookTokens?: {
+    accessToken: string;
+    refreshToken: string;
+  };
 }
 
 // Extend Model with the interfaces
-export interface UserInstance extends Model<UserAttributes>, UserAttributes {}
+export interface UserInstance
+  extends Model<UserAttributes, Optional<UserAttributes, 'id' | 'password'>>,
+    UserAttributes {}
 
 // Define the model using the interfaces
 export const User = sequelize.define<UserInstance>(
@@ -41,7 +53,25 @@ export const User = sequelize.define<UserInstance>(
     },
     password: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true, // null for social login users
+    },
+    googleId: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      unique: true,
+    },
+    facebookId: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      unique: true,
+    },
+    googleTokens: {
+      type: DataTypes.JSON,
+      allowNull: true,
+    },
+    facebookTokens: {
+      type: DataTypes.JSON,
+      allowNull: true,
     },
   },
   {},

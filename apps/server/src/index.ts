@@ -7,10 +7,12 @@ import userRoutes from '@/routes/users.route';
 import authRoutes from '@/routes/auth.route';
 
 import sequelize from '@/config/db';
+import session from 'express-session';
+import passport from './auth/passport';
 
 const app = express(); // Create an Express application
 
-sequelize.sync();
+sequelize.sync(); // Sync the database, force: true for development to drop tables if they exist;
 
 // Middleware configuration
 app.use(express.json()); // Parse incoming JSON requests
@@ -18,6 +20,17 @@ app.use(express.urlencoded({ extended: false })); // Parse URL-encoded data
 app.use(cors()); // Enable CORS for cross-origin requests
 
 const PORT = process.env.PORT || 5000;
+
+app.use(
+  session({
+    secret: process.env.JWT_SECRET!,
+    resave: false,
+    saveUninitialized: false,
+  }),
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.get('/api/hello', (_, res) => {
   res.json({ message: 'Hello from server!' });
