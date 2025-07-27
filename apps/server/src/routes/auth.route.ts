@@ -12,10 +12,11 @@ import {
   facebookCallback,
   googleCallback,
 } from '@/controllers/auth.controller';
+import hashPassword from '@/middleware/hashPassword.miiddleware';
 
 const router = express.Router();
 
-router.post('/users/register', register);
+router.post('/users/register', hashPassword, register);
 
 router.post('/users/login', login);
 
