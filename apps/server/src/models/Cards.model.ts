@@ -2,13 +2,13 @@ import sequelize from '@/config/db';
 import { DataTypes, Model, UUIDV4 } from 'sequelize';
 
 export default interface CardAttributes {
-  id: string;
+  id?: string;
   list_id: string;
   title: string;
   description?: string;
   due_date?: string;
-  position: number;
-  created_by?: string;
+  position?: number;
+  created_by: string;
 }
 
 // Extend Model with the interfaces
@@ -37,6 +37,7 @@ export const Card = sequelize.define<ListInstance>('Card', {
   position: {
     type: DataTypes.INTEGER,
     allowNull: false,
+    defaultValue: 0,
   },
   created_by: {
     type: DataTypes.UUID,

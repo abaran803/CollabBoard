@@ -10,6 +10,10 @@ import {
   updateBoard,
 } from '@/controllers/boards.controller';
 import { createList, getAllLists } from '@/controllers/lists.controller';
+import {
+  createLabel,
+  getLabelsByBoardId,
+} from '@/controllers/labels.controller';
 
 const router = express.Router();
 
@@ -23,5 +27,7 @@ router.get('/:id/:members', getAllBoardMember);
 router.delete('/:boardId/members/:userId', deleteBoardMember);
 router.get('/:boardId/lists', getAllLists);
 router.post('/:boardId/lists', createList);
+router.get('/:boardId/labels', getLabelsByBoardId);
+router.post('/:boardId/labels', createLabel);
 
 export default router;

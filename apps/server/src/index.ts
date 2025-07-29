@@ -6,7 +6,9 @@ import express from 'express';
 import userRoutes from '@/routes/users.route';
 import authRoutes from '@/routes/auth.route';
 import boardRoutes from '@/routes/boards.route';
-import listroutes from '@/routes/lists.route';
+import listRoutes from '@/routes/lists.route';
+import cardRoutes from '@/routes/cards.route';
+import labelRoutes from '@/routes/labels.route';
 
 import sequelize from '@/config/db';
 import session from 'express-session';
@@ -42,7 +44,9 @@ app.get('/api/hello', (_, res) => {
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/users', userRoutes);
 app.use('/api/v1/boards', boardRoutes);
-app.use('/api/v1/lists', listroutes);
+app.use('/api/v1/lists', listRoutes);
+app.use('/api/v1/cards', cardRoutes);
+app.use('/api/v1/labels', labelRoutes);
 
 app.use(errorHandler); // Error handling middleware
 

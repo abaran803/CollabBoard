@@ -6,7 +6,7 @@ import { List } from './Lists.model';
 import { Card } from './Cards.model';
 import { CardMember } from './CardMembers.model';
 import { Comment } from './Comments.model';
-import { Label } from './Labels.model';
+import Label from './Labels.model';
 import { CardLabel } from './CardLabels.model';
 import { Attachment } from './Attachments.model';
 import { Activity } from './Activities.model';
