@@ -1,6 +1,6 @@
 // Import all models
 import { User } from './Users.model';
-import { Board } from './Boards.model';
+import Board from './Boards.model';
 import { BoardMember } from './BoardMembers.model';
 import { List } from './Lists.model';
 import { Card } from './Cards.model';

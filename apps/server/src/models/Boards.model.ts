@@ -1,13 +1,19 @@
 import sequelize from '@/config/db';
-import { DataTypes, Model, UUIDV4 } from 'sequelize';
+import { BoardMember, BoardMemberInstance } from '@/models/BoardMembers.model';
+import { DataTypes, Model, ModelStatic, UUIDV4 } from 'sequelize';
 
 export interface BoardAttributes {
-  id: string;
+  id?: string;
   title: string;
   description?: string;
   background_image?: string;
   created_by: string;
   is_private: boolean;
+  addUser?: (
+    boardId: string,
+    userId: string,
+    role: string,
+  ) => Promise<BoardMemberInstance>;
 }
 
 // Extend Model with the interfaces
@@ -15,7 +21,15 @@ export interface BoardInstance
   extends Model<BoardAttributes>,
     BoardAttributes {}
 
-export const Board = sequelize.define<BoardInstance>('Board', {
+export interface BoardModel extends ModelStatic<BoardInstance> {
+  addUser(
+    boardId: string,
+    userId: string,
+    role: string,
+  ): Promise<BoardMemberInstance>;
+}
+
+const Board = sequelize.define<BoardInstance>('Board', {
   id: {
     type: DataTypes.UUID,
     primaryKey: true,
@@ -39,4 +53,14 @@ export const Board = sequelize.define<BoardInstance>('Board', {
     type: DataTypes.BOOLEAN,
     defaultValue: true,
   },
-});
+}) as BoardModel;
+
+Board.addUser = async function (boardId: string, userId: string, role: string) {
+  return await BoardMember.create({
+    board_id: boardId,
+    user_id: userId,
+    role,
+  });
+};
+
+export default Board;

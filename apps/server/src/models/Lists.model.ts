@@ -2,10 +2,10 @@ import sequelize from '@/config/db';
 import { DataTypes, Model, UUIDV4 } from 'sequelize';
 
 export default interface ListAttributes {
-  id: string;
+  id?: string;
   board_id: string;
   title: string;
-  position: number;
+  position?: number;
 }
 
 // Extend Model with the interfaces
@@ -28,5 +28,6 @@ export const List = sequelize.define<ListInstance>('List', {
   position: {
     type: DataTypes.INTEGER,
     allowNull: false,
+    defaultValue: 0,
   },
 });

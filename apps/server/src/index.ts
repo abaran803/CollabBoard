@@ -5,6 +5,8 @@ import cors from 'cors';
 import express from 'express';
 import userRoutes from '@/routes/users.route';
 import authRoutes from '@/routes/auth.route';
+import boardRoutes from '@/routes/boards.route';
+import listroutes from '@/routes/lists.route';
 
 import sequelize from '@/config/db';
 import session from 'express-session';
@@ -39,6 +41,8 @@ app.get('/api/hello', (_, res) => {
 
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/users', userRoutes);
+app.use('/api/v1/boards', boardRoutes);
+app.use('/api/v1/lists', listroutes);
 
 app.use(errorHandler); // Error handling middleware
 
