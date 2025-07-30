@@ -9,6 +9,8 @@ import boardRoutes from '@/routes/boards.route';
 import listRoutes from '@/routes/lists.route';
 import cardRoutes from '@/routes/cards.route';
 import labelRoutes from '@/routes/labels.route';
+import checklist from '@/routes/checklists.route';
+import commentsRoutes from '@/routes/comments.route';
 
 import sequelize from '@/config/db';
 import session from 'express-session';
@@ -47,6 +49,8 @@ app.use('/api/v1/boards', boardRoutes);
 app.use('/api/v1/lists', listRoutes);
 app.use('/api/v1/cards', cardRoutes);
 app.use('/api/v1/labels', labelRoutes);
+app.use('/api/v1/checklists', checklist);
+app.use('/api/v1/comments', commentsRoutes);
 
 app.use(errorHandler); // Error handling middleware
 

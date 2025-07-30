@@ -2,7 +2,7 @@ import sequelize from '@/config/db';
 import { DataTypes, Model, UUIDV4 } from 'sequelize';
 
 export default interface CommentAttributes {
-  id: string;
+  id?: string;
   card_id: string;
   user_id: string;
   content: string;
