@@ -4,12 +4,17 @@ import Dashboard from '@pages/Dashboard.tsx';
 import TokenHandler from '@pages/TokenHandler.tsx';
 import Login from '@pages/Login.tsx';
 import Register from '@pages/Register.tsx';
+import { Navigate } from 'react-router';
 
 export default [
   {
     path: '/',
     element: <App />,
     children: [
+      {
+        path: '/',
+        element: <Navigate to="/auth/login" replace />,
+      },
       {
         path: 'user',
         element: <AuthGuard />,

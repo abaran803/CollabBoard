@@ -7,5 +7,5 @@ export const AuthGuard = () => {
 
 export const GuestGuard = () => {
   const token = localStorage.getItem('jwt');
-  return !token ? <Outlet /> : <Navigate to="/dashboard" replace />;
+  return !token ? <Outlet /> : <Navigate to="/user/dashboard" replace />;
 };

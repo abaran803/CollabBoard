@@ -13,7 +13,7 @@ function App() {
     const token = params.get('token');
     if (token) {
       localStorage.setItem('jwt', token);
-      window.history.replaceState({}, '', '/dashboard');
+      window.history.replaceState({}, '', '/user/dashboard');
     }
   }, []);
   return (
