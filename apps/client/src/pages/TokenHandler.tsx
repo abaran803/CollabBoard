@@ -9,9 +9,9 @@ const TokenHandler = () => {
     const token = params.get('token');
     if (token) {
       localStorage.setItem('jwt', token);
-      navigate('/dashboard', { replace: true });
+      navigate('/user/dashboard', { replace: true });
     } else {
-      navigate('/login', { replace: true });
+      navigate('/auth/login', { replace: true });
     }
   }, [navigate]);
 

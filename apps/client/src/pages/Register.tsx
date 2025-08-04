@@ -30,7 +30,7 @@ const Register = () => {
       );
       const data = await res.json();
       if (res.ok) {
-        navigate('/login');
+        navigate('/auth/login');
       } else {
         setError(data.message || 'Registration failed');
       }

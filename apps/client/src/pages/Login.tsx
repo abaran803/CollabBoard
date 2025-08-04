@@ -20,7 +20,7 @@ const Login = () => {
       const data = await res.json();
       if (res.ok && data.token) {
         localStorage.setItem('jwt', data.token);
-        navigate('/dashboard');
+        navigate('/user/dashboard');
       } else {
         setError(data.message || 'Login failed');
       }

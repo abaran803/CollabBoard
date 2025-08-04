@@ -12,7 +12,7 @@ const Header = () => {
   const handleLogout = () => {
     localStorage.removeItem('jwt');
     // Optionally call backend logout endpoint here
-    navigate('/login');
+    navigate('/auth/login');
   };
 
   return (
@@ -23,17 +23,17 @@ const Header = () => {
         </Typography>
         {!token && (
           <Stack direction="row" spacing={2}>
-            <Button color="inherit" component={Link} to="/login">
+            <Button color="inherit" component={Link} to="/auth/login">
               Login
             </Button>
-            <Button color="inherit" component={Link} to="/register">
+            <Button color="inherit" component={Link} to="/auth/register">
               Register
             </Button>
           </Stack>
         )}
         {token && (
           <Stack direction="row" spacing={2}>
-            <Button color="inherit" component={Link} to="/dashboard">
+            <Button color="inherit" component={Link} to="/user/dashboard">
               Dashboard
             </Button>
             <Button variant="contained" color="error" onClick={handleLogout}>
